@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
   host : "localhost",
   port: 3306,
   user : "root",
-  password : "", //replace with your own password
+  password : "Polska32696", //replace with your own password
   database : "bamazon"
 });
 
@@ -46,7 +46,7 @@ function showInventory() {
       if(err) throw err;
 
       if (quantity <= rows[0].StockQuantity) {
-          var totals = rows[0].Price + quantity;
+          var totals = rows[0].Price * quantity;
           console.log("Total Due: $" + totals);
           connection.query("UPDATE Products SET StockQuantity = StockQuantity - " + quantity + " WHERE ItemID = " + id);
           console.log("Inventory has been updated");
